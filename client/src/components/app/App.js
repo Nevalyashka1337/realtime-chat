@@ -33,8 +33,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  online: state.online,
-  message: state.message,
   status: state.status
 })
 
