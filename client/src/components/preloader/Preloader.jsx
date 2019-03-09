@@ -1,8 +1,9 @@
 import React from 'react'
+import './Preloader.css'
 
-function Preloader(props) {
+function Preloader() {
 	return (
-		<div>
+		<div className="preloader-wrapper">
 			<p>Loading...</p>
 		</div>
 	)
