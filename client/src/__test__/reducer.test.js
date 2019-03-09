@@ -13,4 +13,10 @@ describe('reducer', () => {
 		const state = reducer(initState, action)
 		expect(state).to.have.property('online').that.equals(2)
 	})
+
+	test('should add new message', () => {
+		const action = { type: 'NEW_MESSAGE', payload: 'hello' }
+		const state = reducer(initState, action)
+		expect(state).to.have.property('message').lengthOf(1)
+	})
 })
