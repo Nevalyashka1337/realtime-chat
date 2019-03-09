@@ -3,3 +3,7 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	background-color: rgb(251, 251, 251);
 }
+
+p {
+	margin: 0;
+}
