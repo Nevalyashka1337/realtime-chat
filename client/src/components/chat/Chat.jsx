@@ -1,14 +1,12 @@
 import React from 'react'
 import './Chat.css'
+import ChatHeader from '../chat-header'
 
 function Chat(props) {
 	return (
 		<div className="chat-wrapper">
 			<div className="chat-pager">
-				<div className="chat-header">
-					<span className="status-dot"></span>
-					<p>3 online</p>
-				</div>
+				<ChatHeader/>
 				<div className="chat-body">
 					<div className="chat-display">
 						<p>msg-1</p><br/>
