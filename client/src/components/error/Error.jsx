@@ -1,8 +1,9 @@
 import React from 'react'
+import './Error.css'
 
-function Error(props) {
+function Error() {
 	return (
-		<div>
+		<div className="error-wrapper">
 			<p>Error</p>
 		</div>
 	)
