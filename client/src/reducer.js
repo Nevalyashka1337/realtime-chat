@@ -5,8 +5,10 @@ export const initState = {
 
 const reducer = ( state = initState, action ) => {
 	switch (action.type) {
+		case 'UPDATE_ONLINE':
+			return { ...state, online: action.payload }
 		default:
-		return state
+			return state
 	}
 }
 export default reducer
