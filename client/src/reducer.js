@@ -1,7 +1,8 @@
 
 export const initState = {
 	online: 0,
-	message: []
+	message: [],
+	status: 0
 }
 
 const reducer = ( state = initState, action ) => {
@@ -10,6 +11,8 @@ const reducer = ( state = initState, action ) => {
 			return { ...state, online: action.payload }
 		case 'NEW_MESSAGE':
 			return { ...state, message: [ ...state.message, action.payload ] }
+		case 'UPDATE_STATUS':
+			return { ...state, status: action.payload }
 		default:
 			return state
 	}
