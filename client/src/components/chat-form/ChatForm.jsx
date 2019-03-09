@@ -14,10 +14,13 @@ class ChatForm extends React.Component {
 
 	handleSubmit = e => {
 		e.preventDefault()
-		console.log(this.state)
-		this.setState({
-			msg: ''
-		})
+		const { msg } = this.state
+		if ( msg.length ) {
+			this.props.onSendMsg(msg)
+			this.setState({
+				msg: ''
+			})
+		}
 	}
 
 	render() {

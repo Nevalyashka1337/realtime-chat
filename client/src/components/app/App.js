@@ -15,9 +15,13 @@ class App extends Component {
   
   componentDidMount() {
     const { setStatus } = this.props
-    const ws = new WebSocket(`${URL}`)
-    ws.onopen = ({ currentTarget }) => setStatus(currentTarget.readyState)
-    ws.onclose = ({ currentTarget }) => setStatus(currentTarget.readyState)
+    this.ws = new WebSocket(`${URL}`)
+    this.ws.onopen = ({ currentTarget }) => setStatus(currentTarget.readyState)
+    this.ws.onclose = ({ currentTarget }) => setStatus(currentTarget.readyState)
+  }
+
+  sendMessage = msg => {
+    this.ws.send(msg)
   }
 
   render() {
@@ -25,7 +29,7 @@ class App extends Component {
     return (
       <>
         { status === 0 && <Preloader/> }
-        { status === 1 && <Chat/> }
+        { status === 1 && <Chat onSendMsg={this.sendMessage}/> }
         { ( status === 2 || status === 3 ) && <Error/> }
       </>
     );

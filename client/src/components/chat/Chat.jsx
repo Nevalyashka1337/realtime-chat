@@ -4,14 +4,14 @@ import ChatHeader from '../chat-header'
 import ChatDisplay from '../chat-display'
 import ChatForm from '../chat-form'
 
-function Chat(props) {
+function Chat({ onSendMsg }) {
 	return (
 		<div className="chat-wrapper">
 			<div className="chat-pager">
 				<ChatHeader/>
 				<div className="chat-body">
 					<ChatDisplay/>
-					<ChatForm/>
+					<ChatForm onSendMsg={onSendMsg}/>
 				</div>
 			</div>
 		</div>
