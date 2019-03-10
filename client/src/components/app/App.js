@@ -5,11 +5,7 @@ import Error from '../error'
 import Chat from '../chat'
 import './App.css'
 
-let URL = ''
-
-if ( process.env.NODE_ENV === 'development' ) URL = 'ws://localhost:1337/'
-else if ( process.env.NODE_ENV === 'production' ) URL = ''
-
+let URL = 'ws://localhost:1337/'
 
 class App extends Component {
   
