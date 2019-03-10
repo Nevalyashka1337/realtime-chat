@@ -60,6 +60,7 @@
 	margin: 5px 0 0;
 	display: inline-block;
 	background-color: rgb(68, 68, 68);
+	word-break: break-all;
 }
 
 /* chat-form */
