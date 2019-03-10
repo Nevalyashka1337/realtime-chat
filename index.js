@@ -1,12 +1,11 @@
 const WebSocket = require('ws')
 const express = require('express')
-const path = require('path')
 const app = express()
 
-app.use(express.static(path.resolve(__dirname, '../client/build')))
+app.use(express.static('client/build'))
 app.get('*', (req, res) => {
 	res.redirect('/')
-	res.sendFile(path.resolve(__dirname, '../clirnt/build/index.html'))
+	res.sendFile('client/build/index.html')
 })
 
 const WS_PORT = 1337
