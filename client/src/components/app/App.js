@@ -5,7 +5,10 @@ import Error from '../error'
 import Chat from '../chat'
 import './App.css'
 
-let URL = 'ws://localhost:1337/'
+let URL = ''
+
+if ( process.env.NODE_ENV === 'development' ) URL = 'ws://localhost:1337/'
+else URL = 'ws://real-time-react-chat.herokuapp.com:1337'
 
 class App extends Component {
   
