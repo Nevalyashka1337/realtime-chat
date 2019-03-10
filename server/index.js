@@ -1,8 +1,18 @@
 const WebSocket = require('ws')
+const express = require('express')
+const path = require('path')
+const app = express()
 
-const PORT = 1337
+app.use(express.static(path.resolve(__dirname, '../client/build')))
+app.get('*', (req, res) => {
+	res.redirect('/')
+	res.sendFile(path.resolve(__dirname, '../clirnt/build/index.html'))
+})
 
-const wss = new WebSocket.Server({ port: PORT })
+const WS_PORT = 1337
+const EXPRESS_PORT = process.env.PORT || 80
+
+const wss = new WebSocket.Server({ port: WS_PORT })
 
 const send = (type, msg) => {
 	wss.clients.forEach(client => {
@@ -31,4 +41,5 @@ wss.on('connection', ws => {
 	ws.on('close', () => send('UPDATE_ONLINE', wss.clients.size))
 })
 
-wss.on('listening', () => console.log(`wss is running on port: ${PORT}`))
+wss.on('listening', () => console.log(`wss is running on port: ${WS_PORT}`))
+app.listen(EXPRESS_PORT, () => console.log(`server is running on port: ${EXPRESS_PORT}`))
