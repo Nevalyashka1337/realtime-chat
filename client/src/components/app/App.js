@@ -14,10 +14,18 @@ else if ( process.env.NODE_ENV === 'production' ) URL = ''
 class App extends Component {
   
   componentDidMount() {
-    const { setStatus } = this.props
+    const { setStatus, setOnline, addMessage } = this.props
     this.ws = new WebSocket(`${URL}`)
     this.ws.onopen = ({ currentTarget }) => setStatus(currentTarget.readyState)
     this.ws.onclose = ({ currentTarget }) => setStatus(currentTarget.readyState)
+    this.ws.onmessage = ({ data }) => {
+      const res = JSON.parse(data)
+      if ( res.type === 'UPDATE_ONLINE' ) {
+        setOnline(res.payload)
+      } else if ( res.type === 'NEW_MESSAGE' ) {
+        addMessage(res.payload)
+      }
+    }
   }
 
   sendMessage = msg => {
@@ -43,6 +51,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setStatus: statusCode => {
     dispatch({ type: 'UPDATE_STATUS', payload: statusCode })
+  },
+  setOnline: online => {
+    dispatch({ type: 'UPDATE_ONLINE', payload: online })
+  },
+  addMessage: msg => {
+    dispatch({ type: 'NEW_MESSAGE', payload: msg })
   }
 })
 
