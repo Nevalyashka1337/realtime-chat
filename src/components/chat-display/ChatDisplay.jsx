@@ -14,9 +14,9 @@ class ChatDisplay extends React.Component {
 	render() {
 		return (
 			<div className="chat-display">
-				{this.props.messageList.map(({ text, id }) => {
+				{this.props.messageList.map(({ text, time }) => {
 					return (
-						<React.Fragment key={id}>
+						<React.Fragment key={time}>
 							<p>{text}</p><br/>
 						</React.Fragment>
 					)
