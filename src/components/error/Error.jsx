@@ -4,7 +4,8 @@ import './Error.css'
 function Error() {
 	return (
 		<div className="error-wrapper">
-			<p>Error</p>
+			<h3>Error</h3>
+			<p>The server is not responding</p>
 		</div>
 	)
 }
